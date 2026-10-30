@@ -344,4 +344,33 @@
     font-family: $font-mono;
     word-break: break-all;
   }
+
+  @media (max-height: 700px) {
+    &__panel {
+      padding: 1rem;
+    }
+
+    &__header {
+      padding-bottom: 0.75rem;
+    }
+
+    &__list {
+      gap: 0.25rem;
+      padding-top: 0.75rem;
+    }
+
+    &__link {
+      padding: 0.55rem 0.85rem;
+      font-size: 1rem;
+    }
+
+    &__footer {
+      padding-top: 0.75rem;
+      gap: 0.75rem;
+    }
+
+    &__resume-btn {
+      padding: 0.65rem;
+    }
+  }
 }

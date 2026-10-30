@@ -19,6 +19,11 @@
     }
   }
 
+  &__info,
+  &__form-wrapper {
+    min-width: 0;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
@@ -124,6 +129,7 @@
     gap: 0.15rem;
     overflow: hidden;
     flex-grow: 1;
+    min-width: 0;
   }
 
   &__label {
@@ -279,4 +285,22 @@
 
 .form-actions {
   padding-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .contact-channel {
+    gap: 0.75rem;
+    padding: 0.875rem;
+  }
+
+  .contact-channel__content {
+    overflow: visible;
+  }
+
+  .contact-channel__value,
+  .contact-channel__static-value {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+  }
 }

@@ -63,75 +63,77 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResumeModal }) => {
   };
 
   return (
-    <header className={`site-header ${isScrolled ? 'site-header--scrolled' : ''}`}>
-      <div className="container site-header__inner">
-        <a href="#hero" className="site-header__brand" aria-label={`${personalInfo.name} - Home`}>
-          <img
-            src={avatarImg}
-            alt={personalInfo.name}
-            className="site-header__avatar"
-            width={40}
-            height={40}
-            loading="eager"
-          />
-          <div className="site-header__brand-text">
-            <span className="site-header__name">{personalInfo.name}</span>
-            <span className="site-header__role">{personalInfo.role}</span>
-          </div>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="site-header__nav" aria-label="Primary Navigation">
-          <ul className="site-header__menu">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
-                <li key={link.id} className="site-header__menu-item">
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className={`site-header__link ${isActive ? 'site-header__link--active' : ''}`}
-                    aria-current={isActive ? 'location' : undefined}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        {/* Actions */}
-        <div className="site-header__actions">
-          {onOpenResumeModal && (
-            <button
-              type="button"
-              onClick={onOpenResumeModal}
-              className="site-header__resume-btn"
-              aria-label="View Resume Details"
-            >
-              Resume
-              <ArrowUpRight size={15} aria-hidden="true" />
-            </button>
-          )}
-
-          <a href="#contact" className="site-header__contact-btn">
-            Connect
+    <>
+      <header className={`site-header ${isScrolled ? 'site-header--scrolled' : ''}`}>
+        <div className="container site-header__inner">
+          <a href="#hero" className="site-header__brand" aria-label={`${personalInfo.name} - Home`}>
+            <img
+              src={avatarImg}
+              alt={personalInfo.name}
+              className="site-header__avatar"
+              width={40}
+              height={40}
+              loading="eager"
+            />
+            <div className="site-header__brand-text">
+              <span className="site-header__name">{personalInfo.name}</span>
+              <span className="site-header__role">{personalInfo.role}</span>
+            </div>
           </a>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            type="button"
-            className="site-header__toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
-            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Desktop Navigation */}
+          <nav className="site-header__nav" aria-label="Primary Navigation">
+            <ul className="site-header__menu">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <li key={link.id} className="site-header__menu-item">
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link.href)}
+                      className={`site-header__link ${isActive ? 'site-header__link--active' : ''}`}
+                      aria-current={isActive ? 'location' : undefined}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Actions */}
+          <div className="site-header__actions">
+            {onOpenResumeModal && (
+              <button
+                type="button"
+                onClick={onOpenResumeModal}
+                className="site-header__resume-btn"
+                aria-label="View Resume Details"
+              >
+                Resume
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </button>
+            )}
+
+            <a href="#contact" className="site-header__contact-btn">
+              Connect
+            </a>
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              type="button"
+              className="site-header__toggle"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       {/* Mobile Drawer Navigation */}
       <div
@@ -205,6 +207,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResumeModal }) => {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 };
