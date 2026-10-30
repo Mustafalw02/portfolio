@@ -33,7 +33,7 @@ export const About: React.FC = () => {
             </p>
             <p>
               I believe great frontend engineering happens at the intersection of UX craftsmanship and rigorous data.
-              Whether instrumenting Adobe Analytics to discover where users hesitate or running controlled Split.io
+              Whether instrumenting Analytics to discover where users hesitate or running controlled
               A/B rollouts, my decisions are grounded in real user feedback and verifiable outcomes.
             </p>
 
