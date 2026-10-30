@@ -3,9 +3,10 @@ import { personalInfo, contactConfig } from '../../config/portfolio';
 import { SectionHeading } from '../common/SectionHeading';
 import { Button } from '../common/Button';
 import { useClipboard } from '../../hooks/useClipboard';
-import { LinkedinIcon, GithubIcon } from '../common/SocialIcons';
+import { LinkedinIcon } from '../common/SocialIcons';
 import {
   Mail,
+  Phone,
   MapPin,
   Copy,
   Check,
@@ -31,7 +32,8 @@ interface FormErrors {
 }
 
 export const Contact: React.FC = () => {
-  const { hasCopied, copy } = useClipboard();
+  const emailClipboard = useClipboard();
+  const phoneClipboard = useClipboard();
   const [formData, setFormData] = useState<FormState>({
     name: '',
     email: '',
@@ -200,10 +202,10 @@ export const Contact: React.FC = () => {
                 <button
                   type="button"
                   className="contact-channel__copy-btn"
-                  onClick={() => copy(personalInfo.email)}
-                  aria-label={hasCopied ? 'Email address copied' : 'Copy email address to clipboard'}
+                  onClick={() => emailClipboard.copy(personalInfo.email)}
+                  aria-label={emailClipboard.hasCopied ? 'Email address copied' : 'Copy email address to clipboard'}
                 >
-                  {hasCopied ? (
+                  {emailClipboard.hasCopied ? (
                     <span className="contact-channel__copied-hint">
                       <Check size={14} aria-hidden="true" />
                       Copied!
@@ -213,6 +215,44 @@ export const Contact: React.FC = () => {
                   )}
                 </button>
               </div>
+
+              {/* Phone Channel */}
+              {personalInfo.phone && (
+                <div className="contact-channel">
+                  <div className="contact-channel__icon">
+                    <Phone size={20} aria-hidden="true" />
+                  </div>
+                  <div className="contact-channel__content">
+                    <span className="contact-channel__label">Phone / WhatsApp</span>
+                    <a
+                      href={`tel:${personalInfo.phone.replace(/[^+\d]/g, '')}`}
+                      className="contact-channel__value"
+                      aria-label={`Call ${personalInfo.phone}`}
+                    >
+                      {personalInfo.phone}
+                    </a>
+                  </div>
+                  <button
+                    type="button"
+                    className="contact-channel__copy-btn"
+                    onClick={() => phoneClipboard.copy(personalInfo.phone || '')}
+                    aria-label={
+                      phoneClipboard.hasCopied
+                        ? 'Phone number copied'
+                        : 'Copy phone number to clipboard'
+                    }
+                  >
+                    {phoneClipboard.hasCopied ? (
+                      <span className="contact-channel__copied-hint">
+                        <Check size={14} aria-hidden="true" />
+                        Copied!
+                      </span>
+                    ) : (
+                      <Copy size={16} aria-hidden="true" />
+                    )}
+                  </button>
+                </div>
+              )}
 
               {/* LinkedIn channel */}
               <div className="contact-channel">
@@ -251,35 +291,6 @@ export const Contact: React.FC = () => {
                   <span className="contact-channel__static-value">{personalInfo.location}</span>
                 </div>
               </div>
-
-              {/* GitHub */}
-              {personalInfo.github && (
-                <div className="contact-channel">
-                  <div className="contact-channel__icon">
-                    <GithubIcon size={20} aria-hidden="true" />
-                  </div>
-                  <div className="contact-channel__content">
-                    <span className="contact-channel__label">GitHub Profile</span>
-                    <a
-                      href={personalInfo.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="contact-channel__value"
-                    >
-                      github.com/mustafa-lightwala
-                    </a>
-                  </div>
-                  <a
-                    href={personalInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="contact-channel__link-btn"
-                    aria-label="Open GitHub profile in new tab"
-                  >
-                    <ExternalLink size={16} aria-hidden="true" />
-                  </a>
-                </div>
-              )}
             </div>
 
             <div className="contact-section__direct-mailto">

@@ -4,7 +4,7 @@ import { experienceData } from '../../data/experience';
 import { skillsData } from '../../data/skills';
 import { educationData } from '../../data/education';
 import { LinkedinIcon } from '../common/SocialIcons';
-import { X, Printer, Mail, MapPin, CheckCircle2 } from 'lucide-react';
+import { X, Printer, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import './ResumeModal.scss';
 
 interface ResumeModalProps {
@@ -89,6 +89,15 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <Mail size={13} aria-hidden="true" />
                 {personalInfo.email}
               </a>
+              {personalInfo.phone && (
+                <>
+                  <span className="resume-doc__separator">•</span>
+                  <a href={`tel:${personalInfo.phone.replace(/[^+\d]/g, '')}`} className="resume-doc__meta-link">
+                    <Phone size={13} aria-hidden="true" />
+                    {personalInfo.phone}
+                  </a>
+                </>
+              )}
               <span className="resume-doc__separator">•</span>
               <a
                 href={personalInfo.linkedin}

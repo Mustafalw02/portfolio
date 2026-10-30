@@ -9,7 +9,6 @@ export const personalInfo: PersonalInfo = {
   email: 'mustafa.lightwala99@gmail.com',
   phone: '+91-9479573141',
   linkedin: 'https://www.linkedin.com/in/mustafa-lightwala',
-  github: 'https://github.com/mustafa-lightwala',
   availability: 'Open to high-impact Senior Frontend & Product Engineering roles',
   yearsOfExperience: '5+ Years',
   summary:
@@ -43,7 +42,6 @@ export const contactConfig: ContactConfig = {
   email: personalInfo.email,
   phone: personalInfo.phone,
   linkedinUrl: personalInfo.linkedin,
-  githubUrl: personalInfo.github,
   location: personalInfo.location,
   // If user sets up a Formspree / endpoint in .env, Vite will pick it up here:
   formEndpoint: import.meta.env.VITE_CONTACT_FORM_ENDPOINT || '',
