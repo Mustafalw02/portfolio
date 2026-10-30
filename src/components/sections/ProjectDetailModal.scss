@@ -1,0 +1,247 @@
+@use '../../styles/variables.scss' as *;
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+
+  @include mobile {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(32, 42, 54, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    max-height: 90vh;
+    background: $color-surface;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-modal;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn $transition-normal forwards;
+
+    @include mobile {
+      max-height: 92vh;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid $color-border;
+    position: sticky;
+    top: 0;
+    background: $color-surface;
+    z-index: 10;
+
+    @include mobile {
+      padding: 1.25rem 1.5rem;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  &__domain {
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $color-text-muted;
+  }
+
+  &__close-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+    color: $color-text-secondary;
+    background-color: $color-bg-subtle;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $color-text-primary;
+      background-color: $color-border;
+    }
+  }
+
+  &__body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+
+    @include mobile {
+      padding: 1.5rem;
+    }
+  }
+
+  &__title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: $color-text-primary;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  &__role-tag {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: $color-text-secondary;
+  }
+
+  &__period {
+    color: $color-text-muted;
+  }
+
+  &__notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background-color: $color-surface-muted;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    p {
+      font-size: 0.875rem !important;
+      color: $color-text-secondary !important;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
+  &__notice-icon {
+    color: $color-accent;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: $color-text-primary;
+
+    svg {
+      color: $color-accent;
+    }
+  }
+
+  &__section-text {
+    font-size: 0.9375rem !important;
+    line-height: 1.65 !important;
+    color: $color-text-secondary !important;
+    margin: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.9375rem;
+    color: $color-text-secondary;
+    line-height: 1.55;
+  }
+
+  &__bullet {
+    color: $color-accent;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  &__metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1rem 1.25rem;
+    background-color: #FAF9F5;
+    border-radius: $radius-md;
+    border-left: 3px solid $color-accent;
+  }
+
+  &__metric-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: $color-text-primary;
+  }
+
+  &__metric-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: $color-accent;
+    flex-shrink: 0;
+    margin-top: 0.55rem;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__actions {
+    padding-top: 0.75rem;
+  }
+
+  &__external-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    background-color: $color-text-primary;
+    color: $color-text-inverse;
+    border-radius: $radius-md;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: #111A24;
+    }
+  }
+}
